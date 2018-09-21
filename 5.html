@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="euc-kr" />
+    <title>Page Title</title>
+    <style>
+        .big {
+                width: 200px;
+                height: 200px;
+            }
+
+        .image {
+                width: 200px;
+                height: 200px;
+            }
+
+        td {
+                text-align: center;
+            }
+        #click {
+        background: white;
+        color: black;
+        font-size: 10vmin;
+        font-weight: bold;
+        font-family: Arial, sans-serif;
+          }
+        </style>
+    <script>
+        function vendingmachine() {
+            money = document.getElementById("money").value;
+            money /= 1;
+            var change = money - price
+            if (money >= price) {
+                var change_1000won = parseInt(((change % 10000) % 5000) / 1000);
+                var change_500won = parseInt((((change % 10000) % 5000) % 1000) / 500);
+                var change_100won = parseInt(((((change % 10000) % 5000) % 1000) % 500) / 100);
+                var change_50won = parseInt((((((change % 10000) % 5000) % 1000) % 500) % 100) / 50);
+                var change_10won = parseInt(((((((change % 10000) % 5000) % 1000) % 500) % 100) % 50) / 10);
+                document.getElementById("vendingmachine").innerHTML = "투입한 돈 :" + money +
+                    "<br>" + "물건의 가격:" + price + "<br>" + "<br>" + "계산식 :" + money + "-" + price +
+                    "<br>" + "잔돈 :" + change + "<br> 1000원 거스름 :" + change_1000won + "<br> 500원 거스름 :" + change_500won + ",  " +
+                    "100원 거스름 :" + change_100won + "," + "10원 거스름 :" + change_10won;
+            }
+            else if (money < price) {
+                document.getElementById("vendingmachine").innerHTML = "돈이 모자릅니다.";
+            }
+        }
+
+        function kantata() {
+            price = 1500;
+        }
+        function letsbe() {
+            price = 1000;
+        }
+        function maxwell() {
+            price = 1100;
+        }
+        function starbucks() {
+            price = 3000;
+        }
+        function top1() {
+            price = 2000;
+        }
+        function pullout(){
+            if(price == 1500)
+            {
+                result.src="kantata.jpg";
+            }
+            else if(price == 1000)
+            {
+                result.src="letsbe.jpg";
+            }
+            else if(price == 1100)
+            {
+                result.src="maxwell.jpg";
+            }
+            else if(price == 3000)
+            {
+                result.src="starbucks.jpg";
+            }
+            else if(price == 2000)
+            {
+                result.src="top.jpg";
+            }
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <table border="3">
+        <tr>
+            <th colspan="5">커피 자판기</th>
+        </tr>
+        <tr>
+            <td><img src="btn_favorite.gif"></td>
+            <td><img src="btn_recommend.gif"></td>
+            <td></td>
+            <td><img src="btn_favorite.gif"></td>
+            <td><img src="btn_favorite.gif"></td>
+        </tr>
+        <tr>
+            <td><img src="kantata.jpg" class="image"></td>
+            <td><img src="letsbe.jpg" class="image"></td>
+            <td><img src="maxwell.jpg" class="image"></td>
+            <td><img src="starbucks.jpg" class="image"></td>
+            <td><img src="top.jpg" class="image"></td>
+        </tr>
+        <tr>
+            <td>칸타타 1500원</td>
+            <td>레쓰비 1000원</td>
+            <td>맥스웰 1100원</td>
+            <td>스타벅스 3000원</td>
+            <td>t.o.p 2000원</td>
+        </tr>
+        <tr>
+            <td><button onclick="kantata()"><img id="click1" src="btn_beforepress.jpg" onmousedown="btn_afterpress1()"
+                        onmouseup="btn_beforepress1()"></button></td>
+            <td><button onclick="letsbe()"><img id="click2" src="btn_beforepress.jpg" onmousedown="btn_afterpress2()"
+                        onmouseup="btn_beforepress2()"></button></td>
+            <td><button onclick="maxwell()"><img id="click3" src="btn_beforepress.jpg" onmousedown="btn_afterpress3()"
+                        onmouseup="btn_beforepress3()"></button></td>
+            <td><button onclick="starbucks()"><img id="click4" src="btn_beforepress.jpg" onmousedown="btn_afterpress4()"
+                        onmouseup="btn_beforepress4()"></button></td>
+            <td><button onclick="top1()"><img id="click5" src="btn_beforepress.jpg" onmousedown="btn_afterpress5()"
+                        onmouseup="btn_beforepress5()"></button></td>
+        </tr>
+    </table>
+    <br><br>
+    <input type="text" id="money"><button onclick="vendingmachine()"><img src="vending2.jpg"></button>
+
+    <p id="vendingmachine"></p>
+
+   <button onclick="pullout()"><img src="pullout.jpg"></button><br><br>
+   <img id="result" class="image">
+
+</body>
+<script>
+    var flag = 0;
+    function btn_beforepress1() {
+        flag = 0;
+        click1.src = 'btn_beforepress.jpg';
+        return false;
+    }
+    function btn_afterpress1() {
+        if (flag != 1) {
+            click1.src = 'btn_afterpress.jpg';
+        } flag = 1;
+        return false;
+    }
+    function btn_beforepress2() {
+        flag = 0;
+        click2.src = 'btn_beforepress.jpg';
+        return false;
+    }
+    function btn_afterpress2() {
+        if (flag != 1) {
+            click2.src = 'btn_afterpress.jpg';
+        } flag = 1;
+        return false;
+    }
+
+    function btn_beforepress3() {
+        flag = 0;
+        click3.src = 'btn_beforepress.jpg';
+        return false;
+    }
+    function btn_afterpress3() {
+        if (flag != 1) {
+            click3.src = 'btn_afterpress.jpg';
+        } flag = 1;
+        return false;
+    }
+
+    function btn_beforepress4() {
+        flag = 0;
+        click4.src = 'btn_beforepress.jpg';
+        return false;
+    }
+    function btn_afterpress4() {
+        if (flag != 1) {
+            click4.src = 'btn_afterpress.jpg';
+        } flag = 1;
+        return false;
+    }
+    function btn_beforepress5() {
+        flag = 0;
+        click5.src = 'btn_beforepress.jpg';
+        return false;
+    }
+    function btn_afterpress5() {
+        if (flag != 1) {
+            click5.src = 'btn_afterpress.jpg';
+        } flag = 1;
+        return false;
+    }
+
+</script>
+
+</html>

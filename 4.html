@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="euc-kr" />
+    <title>Page Title</title>
+    <script>
+        function printstar()
+        {
+        var str="";
+        for(var i=0;i<5;i++)
+        {
+        for(var j=0;j<5;j++)
+        {                       //x=y x+y=4
+                                //i는 x?or y?
+            if(i==j||i+j==4)
+            {
+                str+="*";
+            }
+            else{
+                str+="&nbsp";
+            }
+
+        }
+        str+="<br>";
+    }
+
+        document.getElementById("console").innerHTML=str;
+    }
+    </script>
+</head>
+
+<body onload="printstar()">
+    <div id="console">
+
+    </div>
+</body>
+
+</html>

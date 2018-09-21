@@ -1,0 +1,42 @@
+<!-- with jquery -->
+<html>
+  <head>
+    <style>
+      #click {
+        width:50%;
+		height:50%;	
+	
+	background: white;
+	color: black;
+	font-size: 10vmin;
+	font-weight: bold;
+	font-family: Arial, sans-serif;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <img id="click" src='냥냥이.jpeg' ></div>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+	var timeout, click = $('#click');
+	var count = 0;
+	var flag = 0;
+	click.mousedown(function(){
+	  timeout=setInterval(function(){
+		if(flag!=1){
+		  document.getElementById('click').src='댕댕이.jpeg';
+		} flag = 1;
+	  }, 50);
+	  return false;
+	});
+
+	$(document).mouseup(function(){
+	  clearInterval(timeout);
+	  document.getElementById('click').src='냥냥이.jpeg';
+	  flag=0;
+	  return false;
+	});
+  </script>
+</html>

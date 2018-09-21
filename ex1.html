@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <style>
+      #click {
+    	width: 50%;
+	height: 20%;
+	margin: 10px;
+	
+	background: black;
+	color: white;
+	font-size: 10vmin;
+	font-weight: bold;
+	font-family: Arial, sans-serif;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <div id="click"></div>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+	var timeout, click = $('#click');
+	var count = 0;
+
+	click.mousedown(function(){
+	  timeout=setInterval(function(){
+		click.text(count++);
+	  }, 10);
+
+	  return false;
+	});
+
+	$(document).mouseup(function(){
+	  clearInterval(timeout);
+	  return false;
+	});
+  </script>
+</html>

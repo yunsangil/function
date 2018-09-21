@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="euc-kr" />
+    <title>Page Title</title>
+    <script>
+        function square_area(width, height) {
+            width /= 1;
+            height /= 1;
+            area = width * height;
+            // return area;
+        }
+        function square_size(width,height){
+            width /=1;
+            height /=1;
+            area = width * 2 + height * 2;
+            // return area;
+        }
+        function printarea()
+        {
+            document.getElementById('print').innerHTML=area;
+        }
+        function Ainput() {
+            input = document.getElementById("A").value;
+            A = input;
+        }
+        function Binput() {
+            input = document.getElementById("B").value;
+            B = input;
+        }
+    </script>
+</head>
+
+<body>
+    <input type="text" id="A">
+    <button onclick="Ainput()">A값 입력</button><br><br><br>
+
+
+    <input type="text" id="B">
+    <button onclick="Binput()">B값 입력</button><br><br><br>
+
+    <button onclick="square_area(A,B)">넓이 계산 실행</button>
+
+    <button onclick="square_size(A,B)">둘레 계산 실행</button>
+
+    <button onclick="printarea()">출력 실행</button>
+    <p id="print"></p>
+</body>
+
+</html>

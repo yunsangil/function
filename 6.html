@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="euc-kr" />
+    <title>Page Title</title>
+    <script>
+        function Play_With_Array(){ //문제 1번
+            var count=1;
+            var ArrayforPlay = new Array();
+            var arr="";
+            for(var i=0;i<50;i++)
+            {
+                ArrayforPlay[i]=count;
+                count++;
+                if(ArrayforPlay[i]%3==0)
+                {
+                    ArrayforPlay[i]=0;
+                }
+            }
+            for(var i=0;i<50;i++)
+            {
+                arr+=ArrayforPlay[i]+"/";
+
+                if(i%10==0&&i!=0)
+                {
+                    arr+="<br>";
+                }
+            }
+            document.getElementById("print").innerHTML+=arr;
+
+        }
+        function copyArray_desc(){ //문제 2번
+            var copy_Array= ["A","B","C"];
+
+            document.getElementById("print").innerHTML+="<br>"+copy_Array;
+
+            for(var i=0;i<3;i++)
+            {
+                copy_Array[5-i]=copy_Array[i];
+            }
+            document.getElementById("print").innerHTML+="<br>"+copy_Array;
+
+        }
+        function Count_Number() //문제 3번
+        {
+            var countnumber = new Array(100);
+            for(var i=0;i<100;i++)
+            {
+                countnumber[i]=0;
+            }
+            for(var i=0;i<10;i++)
+            {
+                var save_number=prompt(i+1+"번째 숫자를 입력해주세요");
+                countnumber[save_number]++;
+            }
+            for(var j=0;j<100;j++)
+            {
+                if(countnumber[j]==0)
+                {
+                    continue;
+                }
+                else if(countnumber[j]>0)
+                {
+                    document.getElementById("print").innerHTML+="<br>"+j+"의 출력 횟수 :"+countnumber[j];
+                }
+            }
+        }
+        function multipleArray(){ //문제 4번
+        var Array1 = [2.2,3.5,2.5,10.1,4.0];
+        var Array2 = [3.3,2.0,4.0,1.0,2.5];
+        var result = new Array();
+        for(var i=0;i<Array1.length;i++)
+        {
+            result[i] = Array1[i] * Array2[i];
+
+            document.getElementById("print").innerHTML+="<br>"+(i+1)+"번째 연산 결과 :"+Array1[i]+"*"+Array2[i]+"="+result[i];
+        }
+
+        }
+    </script>
+</head>
+
+<body>
+    <p id="print"></p>
+    <button onclick="Play_With_Array()">1번 문제 실행</button><br><br>
+    <button onclick="copyArray_desc()">2번 문제 실행</button><br><br>
+    <button onclick="Count_Number()">3번 문제 실행(프롬프트 나옴)</button><br><br>
+    <button onclick="multipleArray()">4번 문제 실행</button>
+</body>
+
+</html>
