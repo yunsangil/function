@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="euc-kr" />
+    <title>Page Title</title>
+
+    <script>
+        function Einput() {
+            input = document.getElementById("E").value;
+            E = input;
+        }
+        function prime_check(range) {
+            range /= 1;
+            var count;
+            var prime;
+            var index=0;
+            document.getElementById("Answer_3").innerHTML="";
+            for (var i = 2; i <= range; i++) {
+                count=0;
+                prime=1;
+                while(i>=prime)
+                {
+                    if(i%prime ==0)
+                    {
+                        count+=1;
+                    }
+                    prime+=1;
+                }
+                if(count ==2)
+                {
+                    index+=1;
+                    if(index%5)
+                    {
+                        document.getElementById("Answer_3").innerHTML+=i+"/";
+                    }
+                    else
+                    {
+                        document.getElementById("Answer_3").innerHTML+="<br>"+i+"/";
+                    }
+                }
+            }
+            document.getElementById("Answer_3").innerHTML+="<br>1부터 "+range+"까지 "+index+"개 만큼의 소수가 존재합니다.";
+
+        }
+
+    </script>
+</head>
+
+<body>
+    <input type="text" id="E">
+    <button onclick="Einput()">숫자 입력</button><br><br><br>
+
+    <button onclick="prime_check(E)">입력한 숫자까지 소수 출력</button>
+    <p id="Answer_3"></p>
+</body>
+
+
+
+</html>

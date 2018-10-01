@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="euc-kr" />
+    <title>Page Title</title>
+    <style>
+        .big {
+                width: 200px;
+                height: 200px;
+            }
+
+        .image {
+                width: 200px;
+                height: 200px;
+            }
+
+        td {
+                text-align: center;
+            }
+        #click {
+        background: white;
+        color: black;
+        font-size: 10vmin;
+        font-weight: bold;
+        font-family: Arial, sans-serif;
+          }
+        </style>
+    <script>
+        function f() {
+  for (var a=0; a < 20000   ; a++) {
+    setTimeout(function() {
+       console.log(a);
+    },2000);
+  }
+}
+
+    </script>
+
+</head>
+
+<body onload="f()">
+
+</body>
+
+</html>

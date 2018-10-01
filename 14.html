@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="euc-kr" />
+    <title>Page Title</title>
+
+    <script>
+        function Finput() {
+            input = document.getElementById("F").value;
+            F = input;
+        }
+        function print_star(point) {
+            var starcount = parseInt(point/5);
+
+            document.getElementById("Answer_4").innerHTML+="("+point+")";
+            for(var i=0;i<starcount;i++)
+            {
+                document.getElementById("Answer_4").innerHTML+="*";
+            }
+            document.getElementById("Answer_4").innerHTML+="<br>";
+        }
+
+    </script>
+</head>
+
+<body>
+    <input type="text" id="F">
+    <button onclick="Finput()">점수 입력</button><br><br><br>
+
+    <button onclick="print_star(F)">5점당 별 1개</button>
+    <p id="Answer_4"></p>
+</body>
+
+
+
+</html>

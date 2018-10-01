@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="euc-kr" />
+    <title>Page Title</title>
+
+
+</head>
+
+<body>
+    <p id="Called"></p>
+</body>
+<script>
+    function factorial(count) {
+
+        if (count == 1) {
+
+            return 1;
+        }
+        else {
+
+            return count * factorial(count - 1);
+
+        }
+    }
+
+    document.getElementById("Called").innerHTML = factorial(5);
+
+</script>
+
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="euc-kr" />
+    <title>Page Title</title>
+
+    <script>
+        function lotto_main()
+        {
+        var lotto_nums = new Array(6);
+        input_nums(lotto_nums);
+        print_nums(lotto_nums);
+        }
+        //var result = Math.floor(Math.random() * 45) + 1;
+        function input_nums(lotto_nums) {
+            document.getElementById("Answer_6").innerHTML="";
+            for (var i = 0; i < lotto_nums.length; i++) {
+                lotto_nums[i] = Math.floor(Math.random() * 45)+1;
+                document.getElementById("Answer_6").innerHTML+="번호 입력 :"+lotto_nums[i]+"<br>";
+                for(var j=0;j<i;j++)
+                {
+                    if(lotto_nums[i]==lotto_nums[j])
+                    {
+                        document.getElementById("Answer_6").innerHTML+="같은 번호가 있습니다!<br>";
+                        i--;
+                    }
+                }
+            }
+        }
+        function print_nums(lotto_nums)
+        {
+            document.getElementById("Answer_6").innerHTML+="로또 번호 :";
+            for(var i=0;i<lotto_nums.length;i++)
+            {
+                document.getElementById("Answer_6").innerHTML+=lotto_nums[i]+"/";
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <button onclick="lotto_main()">로또번호 임의출력 실행</button>
+    <p id="Answer_6"></p>
+</body>
+
+
+
+</html>

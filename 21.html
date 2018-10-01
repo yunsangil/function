@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="euc-kr" />
+    <title>Page Title</title>
+    <style>
+    </style>
+
+<body>
+    <div id="console"></div>
+
+    <script>
+        function madeTable(x, y) {
+            var str = "<table border=1 width=500 height=500>"
+            for (var j = 0; j < y; j++) {
+                str += "<tr>";
+                for (var i = 0; i < x; i++) {
+                    str += "<td id=x" + i + "y" + j + ">" + "</td>";
+                }
+                str += "</tr>";
+            }
+            str += "</table>";
+            document.getElementById("console").innerHTML = str;
+        }
+        madeTable(15, 15);
+        function changeColor(x, y, color) {
+            document.getElementById("x" + x + "y" + y).bgColor = color;
+        }
+        changeColor(1, 1, "pink");
+        changeColor(2, 1, "pink");
+        changeColor(3, 1, "pink");
+        changeColor(1, 2, "pink");
+        changeColor(1, 3, "pink");
+        changeColor(1, 4, "pink");
+        changeColor(2, 4, "pink");
+        changeColor(3, 4, "pink");
+
+        changeColor(5,2,"pink");
+        changeColor(5,3,"pink");
+        changeColor(6,2,"pink");
+        changeColor(7,2,"pink");
+        changeColor(7,3,"pink");
+        changeColor(5,4,"pink");
+        changeColor(6,4,"pink");
+        changeColor(7,4,"pink");
+
+
+        changeColor(9,4,"pink");
+        changeColor(9,3,"pink");
+        changeColor(9,2,"pink");
+        changeColor(10,2,"pink");
+        changeColor(11,2,"pink");
+        changeColor(11,3,"pink");
+        changeColor(11,4,"pink");
+        changeColor(12,2,"pink");
+        changeColor(13,2,"pink");
+        changeColor(13,3,"pink");
+        changeColor(13,4,"pink");
+    </script>
+</body>
+
+
+
+</html>

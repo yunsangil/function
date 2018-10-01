@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="euc-kr" />
+    <title>Page Title</title>
+
+    <script>
+        function Ainput() {
+            input = document.getElementById("A").value;
+            kor = input;
+        }
+        function Binput() {
+            input = document.getElementById("B").value;
+            eng = input;
+        }
+
+        function Cinput() {
+            input = document.getElementById("C").value;
+            mat = input;
+        }
+
+        function grade(kor, eng, mat) {
+            kor /= 1;
+            eng /= 1;
+            mat /= 1;
+            return kor + eng + mat;
+
+        }
+        function average() {
+            return grade(kor, eng, mat) / 3;
+        }
+        function print_title() {
+            document.getElementById("Called").innerHTML="국어점수 :"+kor+"<br>영어점수 :"+eng +"<br>수학점수 :"+mat+"<br>총점 :"+ grade(kor, eng, mat) + "<br>평균"+average();
+        }
+    </script>
+
+
+</head>
+
+<body>
+    <input type="text" id="A">
+    <button onclick="Ainput()">국어점수 입력</button><br><br><br>
+
+
+    <input type="text" id="B">
+    <button onclick="Binput()">영어점수 입력</button><br><br><br>
+    <input type="text" id="C">
+    <button onclick="Cinput()">수학점수 입력</button><br><br><br>
+
+    <button onclick="print_title()">실행</button>
+    <p id="Called"></p>
+</body>
+
+</html>

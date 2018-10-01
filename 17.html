@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="euc-kr" />
+    <title>Page Title</title>
+
+    <script>
+        function input() {
+            hour = document.getElementById("G").value;
+            minute = document.getElementById("H").value;
+            set(hour, minute);
+        }
+        function set(hour, minute) {
+            hour /= 1;
+            minute /= 1;
+            var AMPM = "(AM)"; // AM : true PM : false
+
+            if (hour > 12) {
+                hour -= 12;
+                AMPM = "(PM)";
+            }
+            if (minute > 60) {
+                minute -= 60;
+                hour += 1;
+            } if (hour < 10) {
+                hour = '0' + hour;
+            }
+            if (minute < 10) {
+                minute = '0' + minute;
+            }
+            document.getElementById("Answer_7").innerHTML = "설정된 시간 :" + hour + ":" + minute + AMPM + "<br><br><input type='text' id='C'><button onclick='move()'>경과된 시간 입력</button>";
+        }
+        function move() {
+            aftertime = document.getElementById("I").value;
+            for (var i = 0; i < aftertime; i++) {
+                minute++;
+            }
+
+            if (hour > 12) {
+                hour -= 12;
+                AMPM = "(PM)";
+            }
+            if (minute > 60) {
+                minute -= 60;
+                hour += 1;
+            }
+            if (hour < 10) {
+                hour = '0' + hour;
+            }
+            if (minute < 10) {
+                minute = '0' + minute;
+            }
+
+            document.getElementById("Answer_7").innerHTML = "현재 시간 :" + hour + ":" + minute + AMPM
+        }
+    </script>
+</head>
+
+<body>
+    <p>최초 시간과 분 입력(24시간)</p>
+    <input type="text" id="G">
+    <input type="text" id="H">
+    <button onclick="input()">시간 입력</button><br><br><br>
+    <p id="Answer_7"></p>
+</body>
+
+
+
+</html>

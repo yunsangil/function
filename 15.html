@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="euc-kr" />
+    <title>Page Title</title>
+
+    <script>
+        function Lottoinput() {
+            Lotto1 = document.getElementById("A1").value;
+            Lotto2 = document.getElementById("B1").value;
+            Lotto3 = document.getElementById("C1").value;
+            Lotto4 = document.getElementById("D1").value;
+            Lotto5 = document.getElementById("E1").value;
+            Lotto6 = document.getElementById("F1").value;
+        }
+        function lotto_check(){
+            lotto1=Lotto1;
+            lotto2=Lotto2;
+            lotto3=Lotto3;
+            lotto4=Lotto4;
+            lotto5=Lotto5;
+            lotto6=Lotto6;
+            var correct=0;
+            var this_week_Lotto = [4,11,16,20,34,42];
+            var user_Lotto = [lotto1,lotto2,lotto3,lotto4,lotto5,lotto6];
+
+            for(var i=0;i<this_week_Lotto.length;i++)
+            {
+                for(var j=0;j<this_week_Lotto.length;j++)
+                {
+                    if(user_Lotto[j]==this_week_Lotto[i])
+                    {
+                        correct++;
+
+                    }
+                }
+            }
+
+
+            document.getElementById("Answer_5").innerHTML="맞은 갯수는 "+correct+"개 입니다.";
+        }
+
+    </script>
+</head>
+
+<body>
+    <input type="text" id="A1">
+    <input type="text" id="B1">
+    <input type="text" id="C1">
+    <input type="text" id="D1">
+    <input type="text" id="E1">
+    <input type="text" id="F1">
+    <button onclick="Lottoinput()">로또번호 입력</button><br><br><br>
+
+    <button onclick="lotto_check()">로또 번호 체크</button>
+    <p id="Answer_5"></p>
+</body>
+
+
+
+</html>

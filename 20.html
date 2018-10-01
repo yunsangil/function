@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="euc-kr" />
+    <title>Page Title</title>
+    <style>
+        td{
+            width: 200px;
+        }
+    </style>
+
+<body>
+    <div id="console"></div>
+    <div id="console2"></div>
+    <script>
+        document.getElementById("console2").innerHTML = "<table border=1 width=100><tr><td>1</td><td>2</td></tr><tr><td>3</td><td>4</td></tr></table>"
+        function madeTable() {
+            //가로가 x 세로가 y td 크기가 width td 색상이 color인 table을 만들어준다.
+
+            document.getElementById("console").innerHTML = "<table border=3 width=100 height=100>"
+
+            for (var j = 0; j < 15; j++) {
+                document.getElementById("console").innerHTML+="<tr>";
+                for (var i = 0; i < 15; i++) {
+                    document.getElementById("console").innerHTML += "<td>1</td>";
+                }
+                document.getElementById("console").innerHTML+="</tr>";
+            }
+            document.getElementById("console").innerHTML+= "</table>";
+        }
+        madeTable();
+
+        function changeColor(x, y, color) {
+            //changeColor(1,1,"red");
+            document.getElementById("x1y1").bgColor = "red";
+        }
+    </script>
+</body>
+
+
+
+</html>

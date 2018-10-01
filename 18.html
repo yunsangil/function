@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="euc-kr" />
+    <title>Page Title</title>
+    <style>
+        td{
+            width: 500px;
+            height: 300px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        function Ainput() {
+            input = document.getElementById("A").value;
+            kor = input;
+        }
+        function Binput() {
+            input = document.getElementById("B").value;
+            eng = input;
+        }
+
+        function Cinput() {
+            input = document.getElementById("C").value;
+            mat = input;
+        }
+
+        function grade(kor, eng, mat) {
+            kor /= 1;
+            eng /= 1;
+            mat /= 1;
+            return kor + eng + mat;
+
+        }
+        function average() {
+            return grade(kor, eng, mat) / 3;
+        }
+        function print_title() {
+            document.getElementById("Answer_1").innerHTML = "국어점수 :" + kor + "<br>영어점수 :" + eng + "<br>수학점수 :" + mat + "<br>총점 :" + grade(kor, eng, mat) + "<br>평균" + average();
+        } //1번문제 끝
+        function Dinput() {
+            input = document.getElementById("D").value;
+            D = input;
+        }
+        function rec_func(number) {
+            if (number == 1) {
+                return 1;
+            }
+            else {
+                return number + rec_func(number - 1);
+            }
+        }
+        function print_rec_func(A) {
+            A /= 1;
+            document.getElementById("Answer_2").innerHTML = "1부터 "+A+" 까지의 합 :"+ rec_func(A);
+        } //2번문제 끝
+        function Einput() {
+            input = document.getElementById("E").value;
+            E = input;
+        }
+        function prime_check(range) {
+            range /= 1;
+            var count;
+            var prime;
+            var index = 0;
+            document.getElementById("Answer_3").innerHTML = "";
+            for (var i = 2; i <= range; i++) {
+                count = 0;
+                prime = 1;
+                while (i >= prime) {
+                    if (i % prime == 0) {
+                        count += 1;
+                    }
+                    prime += 1;
+                }
+                if (count == 2) {
+                    index += 1;
+                    if (index % 5) {
+                        document.getElementById("Answer_3").innerHTML += i + "/";
+                    }
+                    else {
+                        document.getElementById("Answer_3").innerHTML += "<br>" + i + "/";
+                    }
+                }
+            }
+            document.getElementById("Answer_3").innerHTML += "<br>1부터 " + range + "까지 " + index + "개 만큼의 소수가 존재합니다.";
+
+        } //3번문제 끝
+        function Finput() {
+            input = document.getElementById("F").value;
+            F = input;
+        }
+        function print_star(point) {
+            var starcount = parseInt(point / 5);
+
+            document.getElementById("Answer_4").innerHTML += "(" + point + ")";
+            for (var i = 0; i < starcount; i++) {
+                document.getElementById("Answer_4").innerHTML += "*";
+            }
+            document.getElementById("Answer_4").innerHTML += "<br>";
+        } //4번문제 끝
+        function Lottoinput() {
+            Lotto1 = document.getElementById("A1").value;
+            Lotto2 = document.getElementById("B1").value;
+            Lotto3 = document.getElementById("C1").value;
+            Lotto4 = document.getElementById("D1").value;
+            Lotto5 = document.getElementById("E1").value;
+            Lotto6 = document.getElementById("F1").value;
+        }
+        function lotto_check() {
+            lotto1 = Lotto1;
+            lotto2 = Lotto2;
+            lotto3 = Lotto3;
+            lotto4 = Lotto4;
+            lotto5 = Lotto5;
+            lotto6 = Lotto6;
+            var correct = 0;
+            var this_week_Lotto = [4, 11, 16, 20, 34, 42];
+            var user_Lotto = [lotto1, lotto2, lotto3, lotto4, lotto5, lotto6];
+
+            for (var i = 0; i < this_week_Lotto.length; i++) {
+                for (var j = 0; j < this_week_Lotto.length; j++) {
+                    if (user_Lotto[j] == this_week_Lotto[i]) {
+                        correct++;
+
+                    }
+                }
+            }
+
+
+            document.getElementById("Answer_5").innerHTML = "맞은 갯수는 " + correct + "개 입니다.";
+        } //5번문제 끝
+        function lotto_main() {
+            var lotto_nums = new Array(6);
+            input_nums(lotto_nums);
+            print_nums(lotto_nums);
+        }
+        //var result = Math.floor(Math.random() * 45) + 1;
+        function input_nums(lotto_nums) {
+            document.getElementById("Answer_6").innerHTML = "";
+            for (var i = 0; i < lotto_nums.length; i++) {
+                lotto_nums[i] = Math.floor(Math.random() * 45) + 1;
+                document.getElementById("Answer_6").innerHTML += "번호 입력 :" + lotto_nums[i] + "<br>";
+                for (var j = 0; j < i; j++) {
+                    if (lotto_nums[i] == lotto_nums[j]) {
+                        document.getElementById("Answer_6").innerHTML += "같은 번호가 있습니다!<br>";
+                        i--;
+                    }
+                }
+            }
+        }
+        function print_nums(lotto_nums) {
+            document.getElementById("Answer_6").innerHTML += "로또 번호 :";
+            for (var i = 0; i < lotto_nums.length; i++) {
+                document.getElementById("Answer_6").innerHTML += lotto_nums[i] + "/";
+            }
+        }//6번문제 끝
+
+        function input() {
+            hour = document.getElementById("G").value;
+            minute = document.getElementById("H").value;
+            set(hour, minute);
+        }
+        function set(hour, minute) {
+            hour /= 1;
+            minute /= 1;
+            var AMPM = "(AM)"; // AM : true PM : false
+
+            if (hour > 12) {
+                hour -= 12;
+                AMPM = "(PM)";
+            }
+            if (minute > 60) {
+                minute -= 60;
+                hour += 1;
+            } if (hour < 10) {
+                hour = '0' + hour;
+            }
+            if (minute < 10) {
+                minute = '0' + minute;
+            }
+            document.getElementById("Answer_7").innerHTML = "설정된 시간 :" + hour + ":" + minute + AMPM + "<br><br><input type='text' id='I'><button onclick='move()'>경과된 시간 입력</button>";
+        }
+        function move() {
+            aftertime = document.getElementById("I").value;
+            for (var i = 0; i < aftertime; i++) {
+                minute++;
+            }
+
+            if (hour > 12) {
+                hour -= 12;
+                AMPM = "(PM)";
+            }
+            if (minute > 60) {
+                minute -= 60;
+                hour += 1;
+            }
+            if (hour < 10) {
+                hour = '0' + hour;
+            }
+            if (minute < 10) {
+                minute = '0' + minute;
+            }
+
+            document.getElementById("Answer_7").innerHTML = "현재 시간 :" + hour + ":" + minute + AMPM
+        }//7번문제 끝
+    </script>
+</head>
+
+<body>
+    <table border="3">
+        <tr>
+            <td>
+                문제
+            </td>
+            <td>
+                프로그램 실행
+            </td>
+            <td>
+                답
+            </td>
+        </tr>
+        <tr>
+            <td>
+                1번 문제 : 성적관리 프로그램
+
+            </td>
+            <td>
+                <input type="text" id="A">
+                <button onclick="Ainput()">국어점수 입력</button><br><br><br>
+
+
+                <input type="text" id="B">
+                <button onclick="Binput()">영어점수 입력</button><br><br><br>
+                <input type="text" id="C">
+                <button onclick="Cinput()">수학점수 입력</button><br><br><br>
+
+                <button onclick="print_title()">실행</button>
+            </td>
+            <td>
+                <p id="Answer_1"></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                2번 문제 : 1부터 n 까지의 합 계산(재귀호출 사용)
+            </td>
+            <td>
+                <input type="text" id="D">
+                <button onclick="Dinput()">숫자 입력</button><br><br><br>
+
+                <button onclick="print_rec_func(D)">n까지의 합 실행</button>
+            </td>
+            <td>
+                <p id="Answer_2"></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                3번 문제 : 소수출력 프로그램
+            </td>
+            <td>
+                <input type="text" id="E">
+                <button onclick="Einput()">숫자 입력</button><br><br><br>
+
+                <button onclick="prime_check(E)">입력한 숫자까지 소수 출력</button>
+            </td>
+            <td>
+                <p id="Answer_3"></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                4번 문제 : 별 그래프 출력 프로그램
+            </td>
+            <td>
+                <input type="text" id="F">
+                <button onclick="Finput()">점수 입력</button><br><br><br>
+
+                <button onclick="print_star(F)">5점당 별 1개</button>
+            </td>
+            <td>
+
+                <p id="Answer_4"></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                5번 문제 : 로또 번호 확인 프로그램<br>
+                로또 번호는 미리 입력된 상태로,<br>
+                [4,11,16,20,34,42]가 입력되있다.
+            </td>
+            <td>
+                <input type="text" id="A1">
+                <input type="text" id="B1">
+                <input type="text" id="C1">
+                <input type="text" id="D1">
+                <input type="text" id="E1">
+                <input type="text" id="F1">
+                <button onclick="Lottoinput()">로또번호 입력</button><br><br><br>
+
+                <button onclick="lotto_check()">로또 번호 체크</button>
+            </td>
+            <td>
+
+                <p id="Answer_5"></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                6번 문제 : 로또 번호 생성 프로그램
+            </td>
+            <td>
+
+                <button onclick="lotto_main()">로또번호 임의출력 실행</button>
+            </td>
+            <td>
+
+                <p id="Answer_6"></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                7번 문제 : 시계 프로그램
+            </td>
+            <td>
+
+                <p>최초 시간과 분 입력(24시간)</p>
+                <input type="text" id="G">
+                <input type="text" id="H">
+                <button onclick="input()">시간 입력</button><br><br><br>
+            </td>
+            <td>
+
+                <p id="Answer_7"></p>
+            </td>
+        </tr>
+    </table>
+</body>
+
+
+
+</html>

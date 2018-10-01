@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="euc-kr" />
+    <title>Page Title</title>
+    <style>
+        td {
+            width: 500px;
+            height: 300px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        //4개 학년 3개반 4명의 학생들에게 1학년 1반 1번
+        //부터 숫자를 부여해서 전교생이 하나씩 증가
+        function schoolnumber() {
+            var school = new Array(4);
+
+            for (var i = 0; i < 4; i++) {
+                school[i] = new Array(3);
+                for (var j = 0; j < 3; j++) {
+                    school[i][j] = new Array(4);
+                    for (var k = 0; k < 4; k++) {
+                        school[i][j][k] = i*12 + j*4 + k + 1;
+                        document.getElementById("print").innerHTML += (i + 1) + "학년" + (j + 1) + "반" + (k + 1) + "번 학생은 학번이" + school[i][j][k] + "번 입니다.<br>";
+                        continue;
+                    }
+                }
+            }
+        }
+
+
+
+
+
+
+    </script>
+
+<body onload="schoolnumber()">
+    <p id="print"></p>
+
+</body>
+
+
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="euc-kr" />
+    <title>Page Title</title>
+
+    <script>
+            function Dinput() {
+                input = document.getElementById("D").value;
+                D = input;
+            }
+            function rec_func(number) {
+                if (number == 1) {
+                    return 1;
+                }
+                else {
+                    return number + rec_func(number - 1);
+                }
+            }
+            function print_rec_func(A)
+            {
+                A/=1;
+                document.getElementById("Called").innerHTML=rec_func(A);
+            }
+        </script>
+
+</head>
+
+<body>
+    <input type="text" id="D">
+    <button onclick="Ainput()">숫자 입력</button><br><br><br>
+
+    <button onclick="print_rec_func(A)">n까지의 합 실행</button>
+    <p id="Called"></p>
+</body>
+
+
+
+</html>

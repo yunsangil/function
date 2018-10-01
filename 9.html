@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="euc-kr" />
+    <title>Page Title</title>
+    <script>
+        function fruit(count){
+            document.write("Apple<br>");
+            if(count <0)
+            {
+                return;
+            }
+            console.log(count);
+            fruit(count-1);
+        }
+
+    </script>
+
+</head>
+
+<body onload="fruit(3)">
+    <p id="Called"></p>
+</body>
+
+</html>

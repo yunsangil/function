@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="euc-kr" />
+    <title>Page Title</title>
+    <script>
+        function Call_main() {
+            Call_A();
+            Call_C();
+            Call_D();
+        }
+        function Call_A() {
+            document.getElementById("Called").innerHTML += "A시작<br>";
+            Call_B();
+            document.getElementById("Called").innerHTML += "A종료<br>";
+        }
+        function Call_B() {
+            document.getElementById("Called").innerHTML += "B시작<br>";
+            document.getElementById("Called").innerHTML += "B종료<br>";
+        }
+        function Call_C() {
+            document.getElementById("Called").innerHTML += "C시작<br>";
+            document.getElementById("Called").innerHTML += "C종료<br>";
+        }
+        function Call_D() {
+            document.getElementById("Called").innerHTML += "D시작<br>";
+            document.getElementById("Called").innerHTML += "D종료<br>";
+        }
+    </script>
+</head>
+
+<body onload="Call_main()">
+    <p id="Called"></p>
+</body>
+
+</html>
