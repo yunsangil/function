@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="euc-kr" />
+    <title>Page Title</title>
+
+    <script>
+        function process() {
+            var obj = document.getElementById("target");
+
+            var target = document.getElementById("a");
+            // alert(obj.value);
+            target.innerHTML=obj.value;
+        }
+    </script>
+</head>
+
+<body>
+        <input type="text" id="target" name="text1">
+        <input type="submit" value="제출" onclick="process()">
+        <!-- <button onclick="process()">버튼</button> -->
+        <p id="a"></p>
+</body>
+
+</html>

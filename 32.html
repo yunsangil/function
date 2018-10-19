@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="euc-kr" />
+    <title>Page Title</title>
+
+    <script>
+        //=== type까지 비교
+        //== 상수 poop 비교
+        var sL1="문자열";
+        var sL2="문자열";
+
+        var s01 = new String("문자열");
+        var s02 = new String("문자열");
+
+        if(sL1=sL2)
+        {
+            alert("a1");
+
+        }
+        if (sL1===sL2)
+        {
+            alert("a2");
+        }
+        if (s01==s02){
+            alert("a3");
+        }
+        if(s01===s02){
+            alert("a4");
+        }
+        if(sL1==s01){
+            alert("a5");
+        }
+        if(sL1===s01){
+            alert("a6");
+        }
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

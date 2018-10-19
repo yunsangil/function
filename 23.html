@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="euc-kr" />
+    <title>Page Title</title>
+    <style>
+    </style>
+
+    <script>
+            //타이머 : ms set Timeoutt
+            //set Interval 구간(고유값 리턴) clear interval
+            //set timeout-->한번만
+            //set interval -->입력한 초 마다
+            //clear interval-->반복 구간 초기화
+            var functionVar=showA;
+            function showAlert(){
+                setInterval(functionVar,3000);
+                // setTimeout("showA()",2000);
+                // setTimeout("showA()",3000); <--이렇게도 쓸수 있다.
+            }
+            function showA(){
+                alert('a');
+            }
+    </script>
+</head>
+
+<body>
+    <div id="console"></div>
+    <button onclick="showAlert()">눌러보세요</button>
+
+</body>
+
+
+
+</html>

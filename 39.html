@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="euc-kr" />
+    <title>Page Title</title>
+    <script>
+        function append_node() {
+            var pTag = document.createElement("p");
+            var node = document.createTextNode("new P tag");
+            pTag.appendChild(node);
+
+            document.getElementById("div1").appendChild(pTag);
+        }
+        function insert_before() {
+
+            var pTag = document.createElement("p");
+            var node = document.createTextNode("new P tag");
+            searchTag = document.getElementsByTagName("p");
+            pTag.appendChild(node);
+
+            document.getElementById("div1").insertBefore(pTag,searchTag[0]);
+        }
+        function delete_node() {
+            var parent = document.getElementById("div1");
+            var child = document.getElementsByTagName("p");
+            parent.removeChild(child[0]);
+        }
+
+        function delete_node_after() {
+            var parent = document.getElementById("div1");
+            var child = document.getElementsByTagName("p");
+            parent.removeChild(child[child.length-1]);
+        }
+    </script>
+</head>
+
+<body>
+    <div id="div1">
+        <p id="p1">p tag id p1</p>
+        <p id="p2">p tag id p2</p>
+    </div>
+    <button onclick="append_node()">뒤에 추가</button>
+    <button onclick="insert_before()">앞에 추가</button>
+    <button onclick="delete_node()">삭제</button>
+    <button onclick="delete_node_after()">뒤에 삭제</button>
+</body>
+
+</html>

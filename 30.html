@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="euc-kr" />
+    <title>Page Title</title>
+</head>
+
+<body>
+
+    <script>
+
+        //자바스크립트는 문자열이 없음
+        //자바스크립트 객체
+        //json 자바스크립트 오브젝트(객체) json reast ful, ajax, non-sql
+        //정적 할당
+        var dog = {
+            name: "cat",
+            age: 18,
+            displayname: function () {
+                alert(this.name);
+            }
+
+        }
+        // dog.name = "dog";
+        // alert(cat.displayname());
+        // dog.displayname();
+
+        //동적 할당:선언 후 생성
+        var cat={};
+        cat.name="cat1";
+        cat.age=20;
+        cat.displayName=function(){
+            alert(this.age+":"+this.name);
+        }
+        alert(cat.name);
+        cat.name="cat2";
+        cat.displayName();
+    </script>
+</body>
+
+</html>

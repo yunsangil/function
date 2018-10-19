@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="euc-kr" />
+    <title>Page Title</title>
+        <script>
+            window.onload=function(){
+                var myDiv=document.getElementsByTagName('div')[0];
+                var s = myDiv.nextSibling.lastChild.lastChild.data;
+                var t = myDiv.nextSibling.lastChild.firstChild.nextSibling.firstChild.data;
+                // alert(s);
+                alert(t);
+            }
+        </script>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+        </ul>
+    </div>
+    <div>
+        <ul>
+            <li>3</li>
+        </ul>
+        <ul>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+    </div>
+</body>
+
+</html>

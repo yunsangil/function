@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="euc-kr" />
+    <title>Page Title</title>
+
+</head>
+
+<body>
+    <ul>
+        <li>list item 1</li>
+        <li>list item 2</li>
+        <li>list item 3</li>
+        <li>list item 4</li>
+        <li>list item 5</li>
+    </ul>
+    <script>
+        var list = document.getElementsByTagName('ul')[0];
+        var allItems = list.getElementsByTagName('li');
+
+        for(var i=0, length = allItems.length; i<length;i++){
+            alert(allItems[i].firstChild.data);
+        }
+    </script>
+</body>
+
+</html>

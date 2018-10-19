@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="euc-kr" />
+    <title>Page Title</title>
+    <style>
+        td{
+            width: 50px;
+            height: 50px;
+        }
+        img{
+            width: 400px;
+            height: 400px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="printimage"></div>
+    <p>문제</p>
+    <div id="console"></div><br>
+    <p>남은 알파벳</p>
+    <div id="console2"></div>
+    <p>문자열을 입력하고, 답을 맞춰보자</p>
+    <input type="text" id="answer">&nbsp;&nbsp;<button onclick="hangman()">행맨 실행</button>
+    <p id="test"></p>
+    <p id="test2"></p>
+    <script>
+        document.getElementById("printimage").innerHTML = "<img src=0.jpg>";
+        var solution = ["long time no see", "burn the midnight oil", "take it easy", "approximately", "discussion", "appartment", "dimension", "rainbow six siege","monster hunter world"];
+        var Alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+        var random_solution = randomItem(solution);
+        madeTable(random_solution.length, "x", "console");
+
+        madeTable(Alphabet.length, "alpha", "console2");
+        for (var i = 0; i < Alphabet.length; i++) {
+            document.getElementById("alpha" + i).innerHTML = Alphabet[i];
+        }
+        function randomItem(a) {
+            return a[Math.floor(Math.random() * a.length)];
+        }
+
+        var count = 0;
+        var searched_index = new Array();
+        var end = false;
+        var deathcount = 0;
+        function hangman() {
+
+            var switch_hangman = false;
+            var count_nbsp = 0;
+            var answer = document.getElementById("answer").value;
+            if (end == false) {
+                for (var i = 0; i < Alphabet.length; i++) {
+                    if (answer == Alphabet[i]) {
+                        document.getElementById("alpha" + i).bgColor = "red";
+                        Alphabet[i] = null;
+                        for (var i = 0; i < random_solution.length; i++) {
+
+                            if (random_solution[i] == answer) {
+                                switch_hangman = true;
+                                document.getElementById("x" + i).innerHTML = answer;
+                                count++;
+                                if ((count + count_nbsp) == random_solution.length) {
+                                    alert("클리어!");
+                                    end = true;
+                                    return;
+                                }
+                            }
+
+
+                            if (random_solution[i] == " ") {
+                                document.getElementById("x" + i).innerHTML = "공백";
+                                count_nbsp++;
+                            }
+                        }
+
+                        if (switch_hangman == false) {
+                            deathcount++;
+                            var print = "<img src=" + deathcount + ".jpg>";
+                            document.getElementById("printimage").innerHTML = print;
+
+                            if (deathcount == 6) {
+                                alert("실패!");
+                            }
+                        }
+                    }
+
+                }
+
+
+                // console.log(deathcount);
+            }
+            else if (end == true) {
+                return;
+            }
+        }
+        function madeTable(x, tdid, id) {
+            var str = "<table border=1>"
+            str += "<tr>";
+            for (var i = 0; i < x; i++) {
+                str += "<td id=" + tdid + i + ">" + "</td>";
+            }
+            str += "</tr>";
+            str += "</table>";
+            document.getElementById(id).innerHTML = str;
+        }
+    </script>
+</body>
+
+</html>

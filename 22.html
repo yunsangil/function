@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="euc-kr" />
+    <title>Page Title</title>
+    <style>
+    </style>
+
+<body>
+    <div id="console"></div>
+
+    <script>
+        //returnvalue+="<td width='"+width+"'
+        function madeTable(x, y,width) {
+            var str = "<table border=1>"
+            for (var j = 0; j < y; j++) {
+                str += "<tr>";
+                for (var i = 0; i < x; i++) {
+                    str += "<td width='"+width+"' height='"+width+"' id=x" + i + "y" + j + ">" + "</td>";
+                }
+                str += "</tr>";
+            }
+            str += "</table>";
+            document.getElementById("console").innerHTML = str;
+        }
+        madeTable(30, 30,30);
+        function changeColor(x, y, color) {
+            document.getElementById("x" + x + "y" + y).bgColor = color;
+        }
+        var arrPan=[
+            [1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [1,0,1,0,0,0,1,0,1,0,1,0,0,0,1,0,0,1,0,1],
+            [1,0,1,0,0,0,1,0,1,0,0,1,0,1,0,0,0,1,0,1],
+            [1,0,1,1,1,0,1,1,1,0,0,0,1,0,0,0,0,1,1,1],
+        ]
+        var arrMario=[ //1 ==red 2==brown 3==#FFCC99  4==yellow 5==blue
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,1,1,1,1,1,1,0,0,0,0],
+            [0,0,0,1,1,1,1,1,1,1,1,1,0,0],
+            [0,0,0,2,2,2,3,3,2,3,0,0,0,0],
+            [0,0,2,3,2,3,3,3,2,3,3,3,0,0],
+            [0,0,2,3,2,2,3,3,3,2,3,3,3,0],
+            [0,0,2,2,3,3,3,3,2,2,2,2,0,0],
+            [0,0,0,0,3,3,3,3,3,3,3,0,0,0],
+            [0,0,0,1,1,5,1,1,1,0,0,0,0,0],
+            [0,0,1,1,1,5,1,1,5,1,1,1,0,0],
+            [0,1,1,1,1,5,5,5,5,1,1,1,1,0],
+            [0,3,3,1,5,4,5,5,4,5,1,3,3,0],
+            [0,3,3,3,5,5,5,5,5,5,3,3,3,0],
+            [0,3,3,5,5,5,5,5,5,5,5,3,3,0],
+            [0,0,0,5,5,5,0,0,5,5,5,0,0,0],
+            [0,0,2,2,2,0,0,0,0,2,2,2,0,0],
+            [0,2,2,2,2,0,0,0,0,2,2,2,2,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+
+        ]
+        function drawArray(startX,startY,drawArray)
+        {
+
+            drawArrayHeight = drawArray.length;
+            drawArrayWidth = drawArray[0].length;
+
+            for(var j=0;j<drawArrayHeight;j++)
+            {
+                for(var i=0;i<drawArrayWidth;i++)
+                {
+                    if(drawArray[j][i]==1)
+                    {
+                        changeColor((startX+i),j+(startY),"red");
+                    }
+                    else if(drawArray[j][i]==2)
+                    {
+                        changeColor((startX+i),j+(startY),"#8f784b");
+                    }
+                    else if(drawArray[j][i]==3)
+                    {
+                        changeColor((startX+i),j+(startY),"#FFCC99");
+                    }
+                    else if(drawArray[j][i]==4)
+                    {
+                        changeColor((startX+i),j+(startY),"yellow");
+                    }
+                    else if(drawArray[j][i]==5)
+                    {
+                        changeColor((startX+i),j+(startY),"blue");
+                    }
+                }
+            }
+            //startX, startY 그리기 시작할 xy 좌표
+            //dWidth,dHeight,dArray
+            //dArray
+        }
+        drawArray(17,3,arrMario);
+        function delArray(startX,startY,width,height)
+        {
+            for(var y=startY;y<(startY+height);y++)
+            {
+                for(var x=startX;x<(startX+width);x++)
+                {
+                    changeColor(x,y,"white");
+                }
+            }
+        }
+        // delArray(5,5,10,10);
+    </script>
+</body>
+
+
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="euc-kr" />
+    <title>Page Title</title>
+
+    <script>
+        //datetime-local
+
+        function calc_fee(){
+
+
+            var intime = document.getElementById("in").value;
+            var outtime = document.getElementById("out").value;
+
+            var inpc = new Date(intime);
+            var outpc = new Date(outtime);
+            alert(outpc.getTime());
+            alert(inpc.getTime());
+            var diff = outpc.getHours() - inpc.getHours();
+            var hours = Math.floor(diff / (1000*60*60));
+            alert(hours);
+            alert(diff);
+
+            document.getElementById("result").innerHTML=hours;
+            document.getElementById("result").innerHTML+="<br>"+diff;
+        }
+
+
+
+    </script>
+</head>
+
+<body>
+    <input type="datetime-local" id="in"><br>
+    <input type="datetime-local" id="out"><br>
+    <button onclick="calc_fee()">실행</button>
+    <p id="result"></p>
+</body>
+
+</html>

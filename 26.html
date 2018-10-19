@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="euc-kr" />
+    <title>Page Title</title>
+    <style>
+    </style>
+
+</head>
+
+<body>
+    <div id="console"></div>
+    <button onclick="move_left()">왼쪽 이동</button><br>
+
+    <button onclick="move_right()">오른쪽 이동</button>
+
+    <button onclick="move_down()">밑으로 이동</button>
+
+    <button onclick="randCall()">랜덤생성</button>
+
+    <script>
+        //returnvalue+="<td width='"+width+"'
+        function madeTable(x, y, width) {
+            var str = "<table border=1>"
+            for (var j = 0; j < y; j++) {
+                str += "<tr>";
+                for (var i = 0; i < x; i++) {
+                    str += "<td width='" + width + "' height='" + width + "' id=x" + i + "y" + j + ">" + "</td>";
+                }
+                str += "</tr>";
+            }
+            str += "</table>";
+            document.getElementById("console").innerHTML = str;
+        }
+        madeTable(53, 25, 30);
+        function changeColor(x, y, color) {
+            document.getElementById("x" + x%53 + "y" + y%25).bgColor = color;
+        }
+        var Lstick = [
+            [1, 0,0],
+            [1, 0,0],
+            [1, 0,0],
+            [1, 1,0]
+        ]
+        var Istick = [
+            [0,1,0],
+            [0,1,0],
+            [0,1,0],
+            [0,1,0]
+        ]
+        var square = [
+            [0, 0,0],
+            [1, 1,0],
+            [1, 1,0],
+            [0, 0,0],
+        ]
+        var Tstick = [
+            [0, 0, 0],
+            [0, 1, 0],
+            [1, 1, 1],
+            [0, 0, 0],
+        ]
+        var Sstick = [
+            [0, 0, 0],
+            [1, 1, 0],
+            [0, 1, 1],
+            [0, 0, 0],
+        ]
+        var randArray = [Sstick, Tstick, Istick, square, Lstick];
+        function drawArray(startX, startY, drawArray) {
+
+            drawArrayHeight = drawArray.length;
+            drawArrayWidth = drawArray[0].length;
+
+            for (var j = 0; j < drawArrayHeight; j++) {
+                for (var i = 0; i < drawArrayWidth; i++) {
+                    if (drawArray[j][i] == 1) {
+                        changeColor((startX + i)%53, j + (startY)%25, "red");
+                    }
+                    else if (drawArray[j][i] == 2) {
+                        changeColor((startX + i), j + (startY), "#8f784b");
+                    }
+                    else if (drawArray[j][i] == 3) {
+                        changeColor((startX + i), j + (startY), "#FFCC99");
+                    }
+                    else if (drawArray[j][i] == 4) {
+                        changeColor((startX + i), j + (startY), "yellow");
+                    }
+                    else if (drawArray[j][i] == 5) {
+                        changeColor((startX + i), j + (startY), "blue");
+                    }
+                }
+            }
+            //startX, startY 그리기 시작할 xy 좌표
+            //dWidth,dHeight,dArray
+            //dArray
+        }
+        var x=2;
+        var y=2;
+
+        function randomItem(a) {
+            return a[Math.floor(Math.random() * a.length)];
+        }
+
+        function randCall() {
+            x=1;
+            y=1;
+            randArrayResult = randomItem(randArray);
+            delArray(0, 0,randArrayResult[0].length+5, randArrayResult.length+5);
+            drawArray(x, y, randArrayResult);
+        }
+
+        function move_right() {
+            // if (x < 50 && y < 23) {
+                if (x % 2 == 1) {
+
+                    delArray(0,0,randArrayResult[0].length+x,randArrayResult.length+y)
+                    drawArray(x, y, randArrayResult);
+                    console.log(randArrayResult[0].length);
+                    console.log(randArrayResult.length);
+                    x++;
+                }
+                else if (x % 2 == 0) {
+
+                    delArray(0,0,randArrayResult[0].length+x,randArrayResult.length+y)
+                    drawArray(x, y, randArrayResult);
+                    x++;
+
+                }
+            }
+            function move_left() {
+            if (x > 0) {
+                if (x % 2 == 1) {
+
+                    x--;
+                    delArray(1,1,randArrayResult[0].length+x,randArrayResult.length+y)
+                    drawArray(x, y, randArrayResult);
+                }
+                else if (x % 2 == 0) {
+
+                    x--;
+                    delArray(1,1,randArrayResult[0].length+x,randArrayResult.length+y)
+                    drawArray(x, y, randArrayResult);
+
+                }
+            }
+            }
+
+        // }
+        function move_down() {
+            // if (y < 23) {
+                    console.log(randArrayResult[0].length);
+                    console.log(randArrayResult.length);
+                delArray(0,0,randArrayResult[0].length+x,randArrayResult.length+y);
+                drawArray(x, y, randArrayResult);
+                y++;
+
+            }
+        // }
+
+        function delArray(startX, startY, width, height) {
+            for (var y = 0; y < height; y++) {
+                for (var x = 0; x < width; x++) {
+                    changeColor(startX+x, startY+y, "white");
+                }
+            }
+        }
+        // delArray(5,5,10,10);
+    </script>
+</body>
+
+
+
+</html>

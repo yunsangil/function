@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="euc-kr" />
+    <title>Page Title</title>
+
+    <script>
+        var sum = 0;
+
+        var startTime = new Date().getTime();
+        for (var i = 1; i <= 1000000; i++) {
+            sum += i;
+        }
+        var endTime = new Date().getTime();
+
+        document.write(endTime - startTime + "밀리 초가 걸렸음!");
+        function strCap(str) {
+            var result = str.charAt(0).toUpperCase() + str.slice(1);
+            alert(result);
+        }
+
+        // strCap("hong");
+
+        function getthisMonth(){
+            var today = new Date();
+
+            var month = today.getMonth()+1; //0부터 시작하는고로
+
+            switch(month)
+            {
+                case 1:
+                document.getElementById("month").innerHTML = "It Is Jan";
+                break;
+
+                case 2:
+                document.getElementById("month").innerHTML = "It Is Feb";
+                break;
+
+                case 3:
+                document.getElementById("month").innerHTML = "It Is Mar";
+                break;
+
+                case 4:
+                document.getElementById("month").innerHTML = "It Is Apr";
+                break;
+
+                case 5:
+                document.getElementById("month").innerHTML = "It Is May";
+                break;
+
+                case 6:
+                document.getElementById("month").innerHTML = "It Is Jun";
+                break;
+
+                case 7:
+                document.getElementById("month").innerHTML = "It Is Jul";
+                break;
+
+                case 8:
+                document.getElementById("month").innerHTML = "It Is Aug";
+                break;
+
+                case 9:
+                document.getElementById("month").innerHTML = "It Is Sep";
+                break;
+
+                case 10:
+                document.getElementById("month").innerHTML = "It Is Ouc";
+                break;
+
+                case 11:
+                document.getElementById("month").innerHTML = "It Is Nov";
+                break;
+
+                case 12:
+                document.getElementById("month").innerHTML = "It Is Dec";
+                break;
+
+            }
+        }
+
+        function movielist(){
+            var movies = ["터미네이터","트랜스포머"]
+            movies[movies.length]="맨오브스틸";
+            movies[2] = "스파이더맨";
+
+            alert(movies[movies.length-1]);
+
+        }
+        var arr = ["사과","오렌지","귤","당근","케일"];
+
+        function randomItem(a) {
+            return a[Math.floor(Math.random() * a.length)];
+        }
+        alert(randomItem(arr));
+
+        var arr2 = ["Hello", 10, 32.6, true];
+        function find(arr, value){
+
+            for(var i=0;i<arr.length;i++)
+            {
+                if(arr[i]==value)
+                {
+                    return i;
+                }
+            }
+        }
+        alert(find(arr2,"Hello"));
+
+        function check(str){
+
+            for(var i=0;i<str.length;i++)
+            {
+                if(str[i]=="X"&&str[i+1]=="X"&&str[i+2]=="X")
+                {
+                    alert("비속어 사용");
+                    return;
+                }
+            }
+        }
+        check('buy XXX now');
+
+        function dateTime(){
+
+            var today = new Date();
+
+            var today_month = today.getMonth()+1;
+            var today_date = today.getDate();
+            var today_day = today.getDay();
+
+            document.getElementById("days").innerHTML+=today_month+"월" +today_date+"일";
+        }
+
+        setTimeout(dateTime(),1000*60*60*24);
+    </script>
+</head>
+
+<body onload="getthisMonth(),movielist(),dateTime()">
+    <p id="month"></p><br>
+
+    <p id="movie"></p><br>
+
+    <p id="days"></p>
+</body>
+
+</html>

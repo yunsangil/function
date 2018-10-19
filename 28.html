@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="euc-kr" />
+    <title>Page Title</title>
+    <style>
+        img {
+            width: 30px;
+            height: 25px;
+        }
+
+        table {
+            margin: auto;
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+
+        td {
+            border: 1px solid black;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            vertical-align: middle;
+        }
+    </style>
+
+</head>
+
+<body onkeydown="key_check(event)">
+    <div id="console"></div>
+    <button onclick="Replay()">리플레이</button>
+    <button onclick="AI()">AI 생성</button>
+    <button onclick="AIplay()">자동 플레이</button>
+    <script>
+        //addEventListener("click", function(){alert('a');});
+        window.onload = function () {     //페이지가 다 불려지고 나면 발생하는 이벤트
+            alert("onload event");
+            madeTable(map[0].length, map.length, 5);
+            drawMaze(0, 0, map);
+        }
+        function drawMaze(startX, startY, mazeArray) {
+            for (var i = 0; i < mazeArray.length; i++) { //y
+                for (var j = 0; j < mazeArray[0].length; j++) { //x
+                    switch (mazeArray[i][j]) {
+                        case 0:
+                            changeColor(j, i, "white");
+                            break;
+                        case 1:
+                            changeColor(j, i, "red");
+                            break;
+                        case 2:
+                            changeColor(j, i, "green");
+                            break;
+                        case 3:
+                            document.getElementById("x" + j + "y" + i).innerHTML = "<img src=https://blogfiles.pstatic.net/MjAxODEwMTBfMjQx/MDAxNTM5MTQ4MjM0Nzgw.E0Q1PXUQxlVUpFG1OA2_BjiOCC31NX7sGoPF6yUL1WQg.wgjPHeQsPmf-XWeKcWSCPn5AFnAKCj4u3puyBIgeGZQg.JPEG.htghtc19/1.jpg>"
+                            break;
+                    }
+
+                }
+            }
+        }
+        function madeTable(x, y, width) {
+            var str = "<table border=1>"
+            for (var j = 0; j < y; j++) {
+                str += "<tr>";
+                for (var i = 0; i < x; i++) {
+                    str += "<td width='" + width + "' height='" + width + "' id=x" + i + "y" + j + ">" + "</td>";
+                }
+                str += "</tr>";
+            }
+            str += "</table>";
+            document.getElementById("console").innerHTML = str;
+        }
+        function changeColor(x, y, color) {
+            document.getElementById("x" + x + "y" + y).bgColor = color;
+        }
+
+        var map = [
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 2],
+            [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 1],
+            [1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1],
+            [1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 0, 1, 0, 1],
+            [1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 1, 0, 1],
+            [1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1],
+            [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+            [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1],
+            [1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1],
+            [1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1],
+            [1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1],
+            [1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1],
+            [1, 3, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+        ];
+        function drawArray(startX, startY, drawArray) {
+
+            drawArrayHeight = drawArray.length;
+            drawArrayWidth = drawArray[0].length;
+
+            for (var j = 0; j < drawArrayHeight; j++) {
+                for (var i = 0; i < drawArrayWidth; i++) {
+                    if (drawArray[j][i] == 1) {
+                        changeColor((startX + i) % 16, (j + (startY)) % 16, "red");
+                    }
+                    else if (drawArray[j][i] == 2) {
+                        changeColor((startX + i) % 16, (j + (startY)) % 16, "#8f784b");
+                    }
+                    else if (drawArray[j][i] == 3) {
+                        changeImage((startX + i) % 16, (j + (startY)) % 16);
+                    }
+                    else if (drawArray[j][i] == 4) {
+                        changeColor((startX + i), j + (startY), "yellow");
+                    }
+                    else if (drawArray[j][i] == 5) {
+                        changeColor((startX + i), j + (startY), "blue");
+                    }
+                }
+            }
+            //startX, startY 그리기 시작할 xy 좌표
+            //dWidth,dHeight,dArray
+            //dArray
+        }
+        var y = 13;
+        var x = 1;
+        // }
+
+
+        var mazex = [];
+
+        var mazey = [];
+
+        var count = 0;
+        function key_check(evt) {
+            var code = evt.which ? evt.which : event.keyCode;
+            if (code == 38) {
+                // up arrow
+                if (map[y - 1][x] == 0) {
+                    document.getElementById("x" + x + "y" + y).innerHTML = "";
+                    y--;
+                    document.getElementById("x" + x + "y" + y).innerHTML = "<img src='https://blogfiles.pstatic.net/MjAxODEwMTBfMjQx/MDAxNTM5MTQ4MjM0Nzgw.E0Q1PXUQxlVUpFG1OA2_BjiOCC31NX7sGoPF6yUL1WQg.wgjPHeQsPmf-XWeKcWSCPn5AFnAKCj4u3puyBIgeGZQg.JPEG.htghtc19/1.jpg'>";
+
+                    mazex[count] = x;
+                    mazey[count] = y;
+                    count++;
+                }
+
+
+                else if (map[y - 1][x] == 1) {
+                    return;
+                }
+
+                else if (map[y - 1][x] == 2) {
+                    alert("게임을 클리어하셨습니다!");
+                }
+
+            }
+            else if (code == 40) {
+                // down arrow
+
+                if (map[y + 1][x] == 0) {
+
+                    document.getElementById("x" + x + "y" + y).innerHTML = "";
+                    y++;
+                    document.getElementById("x" + x + "y" + y).innerHTML = "<img src='https://blogfiles.pstatic.net/MjAxODEwMTBfMjQx/MDAxNTM5MTQ4MjM0Nzgw.E0Q1PXUQxlVUpFG1OA2_BjiOCC31NX7sGoPF6yUL1WQg.wgjPHeQsPmf-XWeKcWSCPn5AFnAKCj4u3puyBIgeGZQg.JPEG.htghtc19/1.jpg'>";
+
+                    mazex[count] = x;
+                    mazey[count] = y;
+                    count++;
+                }
+                else if (map[y + 1][x] == 1) {
+                    return;
+                }
+                else if (map[y + 1][x] == 2) {
+                    alert("게임을 클리어 하셨습니다!");
+                }
+                else if (map[y + 1][x] == 3) {
+
+                    document.getElementById("x" + x + "y" + y).innerHTML = "";
+                    y++;
+                    document.getElementById("x" + x + "y" + y).innerHTML = "<img src='https://blogfiles.pstatic.net/MjAxODEwMTBfMjQx/MDAxNTM5MTQ4MjM0Nzgw.E0Q1PXUQxlVUpFG1OA2_BjiOCC31NX7sGoPF6yUL1WQg.wgjPHeQsPmf-XWeKcWSCPn5AFnAKCj4u3puyBIgeGZQg.JPEG.htghtc19/1.jpg'>";
+
+
+                    mazex[count] = x;
+                    mazey[count] = y;
+                    count++;
+                }
+
+            }
+            else if (code == 37) {
+                // left arrow
+
+                if (map[y][x - 1] == 0) {
+
+                    document.getElementById("x" + x + "y" + y).innerHTML = "";
+                    x--;
+                    document.getElementById("x" + x + "y" + y).innerHTML = "<img src='https://blogfiles.pstatic.net/MjAxODEwMTBfMjQx/MDAxNTM5MTQ4MjM0Nzgw.E0Q1PXUQxlVUpFG1OA2_BjiOCC31NX7sGoPF6yUL1WQg.wgjPHeQsPmf-XWeKcWSCPn5AFnAKCj4u3puyBIgeGZQg.JPEG.htghtc19/1.jpg'>";
+
+                    mazex[count] = x;
+                    mazey[count] = y;
+                    count++;
+                }
+
+            }
+            else if (code == 39) {
+                // right arrow
+
+                if (map[y][x + 1] == 0) {
+
+                    document.getElementById("x" + x + "y" + y).innerHTML = "";
+                    x++;
+                    document.getElementById("x" + x + "y" + y).innerHTML = "<img src='https://blogfiles.pstatic.net/MjAxODEwMTBfMjQx/MDAxNTM5MTQ4MjM0Nzgw.E0Q1PXUQxlVUpFG1OA2_BjiOCC31NX7sGoPF6yUL1WQg.wgjPHeQsPmf-XWeKcWSCPn5AFnAKCj4u3puyBIgeGZQg.JPEG.htghtc19/1.jpg'>";
+
+                    mazex[count] = x;
+                    mazey[count] = y;
+                    count++;
+                }
+
+                else if (map[y][x + 1] == 1) {
+                    return;
+                }
+                else if (map[y][x + 1] == 2) {
+
+                    document.getElementById("x" + x + "y" + y).innerHTML = "";
+                    x++;
+                    document.getElementById("x" + x + "y" + y).innerHTML = "<img src='https://blogfiles.pstatic.net/MjAxODEwMTBfMjQx/MDAxNTM5MTQ4MjM0Nzgw.E0Q1PXUQxlVUpFG1OA2_BjiOCC31NX7sGoPF6yUL1WQg.wgjPHeQsPmf-XWeKcWSCPn5AFnAKCj4u3puyBIgeGZQg.JPEG.htghtc19/1.jpg'>";
+
+                    alert("게임을 클리어 하셨습니다!");
+
+
+                    mazex[count] = x;
+                    mazey[count] = y;
+                    count++;
+
+
+                }
+
+            }
+
+        }
+        //최단거리 : 시작점, 종료시점
+        //인공지능 :
+        function Replay() {
+            document.getElementById("x" + mazex[0] + "y" + mazey[0]).innerHTML = "<img src='https://blogfiles.pstatic.net/MjAxODEwMTBfMjQx/MDAxNTM5MTQ4MjM0Nzgw.E0Q1PXUQxlVUpFG1OA2_BjiOCC31NX7sGoPF6yUL1WQg.wgjPHeQsPmf-XWeKcWSCPn5AFnAKCj4u3puyBIgeGZQg.JPEG.htghtc19/1.jpg'>";
+            var c = 1;
+            var intervalId = setInterval(() => {
+                if (c >= (mazex.length - 1)) clearInterval(intervalId);
+                document.getElementById("x" + mazex[c - 1] + "y" + mazey[c - 1]).innerHTML = "";
+                document.getElementById("x" + mazex[c] + "y" + mazey[c]).innerHTML = "<img src='https://blogfiles.pstatic.net/MjAxODEwMTBfMjQx/MDAxNTM5MTQ4MjM0Nzgw.E0Q1PXUQxlVUpFG1OA2_BjiOCC31NX7sGoPF6yUL1WQg.wgjPHeQsPmf-XWeKcWSCPn5AFnAKCj4u3puyBIgeGZQg.JPEG.htghtc19/1.jpg'>";
+                c++;
+            }, 500);
+
+        }
+        var AIx = [];
+        var AIy = [];
+        var AIcount = 0;
+
+        var AImovex = 13;
+        var AImovey = 1;
+        var trueorfalse = true
+        //x+1 == 오른쪽
+        //x-1 == 왼쪽
+        //y+1 == 아래쪽
+        //y-1 == 위쪽
+        function AI() {
+            for(var i=0;i<200;i++){
+            if (map[AImovex + 1][AImovey] == 0) {
+                AImovex--;
+                AIx[AIcount] = AImovex;
+                AIy[AIcount] = AImovey;
+                AIcount++;
+            }
+
+            else if (map[AImovex + 1][AImovey] == 1) //오른쪽이 1이면
+            {
+                if (map[AImovex][AImovey + 1] == 0) {
+                    AImovey++;
+                    AIx[AIcount] = AImovex;
+                    AIy[AIcount] = AImovey;
+                    AIcount++;
+
+                }
+                else if (map[AImovex][AImovey + 1] == 1) //아래쪽이 1이면
+                {
+
+                    if (map[AImovex - 1][AImovey] == 0) {
+                        AImovex--;
+                        AIx[AIcount] = AImovex;
+                        AIy[AIcount] = AImovey;
+                        AIcount++;
+
+                    }
+                    else if (map[AImovex - 1][AImovey] == 1) //왼쪽이 1이면
+                    {
+
+                        if (map[AImovex][AImovey - 1] == 0) {
+                            AImovey--;
+                            AIx[AIcount] = AImovex;
+                            AIy[AIcount] = AImovey;
+                            AIcount++;
+
+                        }
+
+                        else if (map[AImovex][AImovey - 1] == 1) //위쪽이 1이면
+                        {
+                            alert("경로 탐색이 불가합니다.");
+                            trueorfalse=false;
+                        }
+                    }
+                }
+            }
+
+        }
+        }
+        function AIplay() {
+            document.getElementById("x" + AIx[0] + "y" + AIy[0]).innerHTML = "<img src='https://blogfiles.pstatic.net/MjAxODEwMTBfMjQx/MDAxNTM5MTQ4MjM0Nzgw.E0Q1PXUQxlVUpFG1OA2_BjiOCC31NX7sGoPF6yUL1WQg.wgjPHeQsPmf-XWeKcWSCPn5AFnAKCj4u3puyBIgeGZQg.JPEG.htghtc19/1.jpg'>";
+            var c = 1;
+            var intervalId = setInterval(() => {
+                if (c >= (AIx.length - 1)) clearInterval(intervalId);
+                document.getElementById("x" + AIx[c - 1] + "y" + AIy[c - 1]).innerHTML = "";
+                document.getElementById("x" + AIx[c] + "y" + AIy[c]).innerHTML = "<img src='https://blogfiles.pstatic.net/MjAxODEwMTBfMjQx/MDAxNTM5MTQ4MjM0Nzgw.E0Q1PXUQxlVUpFG1OA2_BjiOCC31NX7sGoPF6yUL1WQg.wgjPHeQsPmf-XWeKcWSCPn5AFnAKCj4u3puyBIgeGZQg.JPEG.htghtc19/1.jpg'>";
+                c++;
+            }, 500);
+
+        }
+        function delArray(startX, startY, width, height) {
+            for (var y = 0; y < height; y++) {
+                for (var x = 0; x < width; x++) {
+                    changeColor(startX + x, startY + y, "white");
+                }
+            }
+        }
+    </script>
+
+</body>
+
+
+
+</html>

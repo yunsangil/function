@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="euc-kr" />
+    <title>Page Title</title>
+
+    <script>
+        function press() {
+            alert("반갑습니다");
+        }
+        function changedata() {
+            document.getElementById("change").innerHTML = "이 텍스트는 자바스크립트에서 변경한 것입니다.";
+        }
+        function isNumber(data) {
+            var regExp = /^[0-9]+$/;
+
+            if(regExp.test(data.value)){ // == data.value.match(regExp)
+                alert("숫자가 맞습니다.");
+                return true;
+            }
+            else{
+                alert("숫자가 아닙니다.");
+                data.focus();
+                return false;
+            }
+        }
+        function btn_beforepress() {
+        flag = 0;
+        click.src = 'https://blogfiles.pstatic.net/MjAxODA5MjFfMTc5/MDAxNTM3NTE3ODAxNDEz.UKLfyzrqRwjNGKCpU8jVB33Nx_lLf4EZo3OwWsdASdEg.he2sbx79l8nYqv8wbbuQ2cup5u4e5gF36bxj1UsvX0Yg.JPEG.htghtc19/btn_beforepress.jpg';
+        return false;
+    }
+    function btn_afterpress() {
+        if (flag != 1) {
+            click.src = 'https://blogfiles.pstatic.net/MjAxODA5MjFfMTUg/MDAxNTM3NTE3ODAwOTY2.IrRfAbezdeF0G283wh9S-TcmDMl57mUJl_dLc9BDPG8g.duv90tdyBGEh0BzB9aBDwujb4i7aNkrtpTSVtppoR7sg.JPEG.htghtc19/btn_afterpress.jpg';
+        } flag = 1;
+        return false;
+    }
+    </script>
+</head>
+
+<body>
+    <p>자바 스크립트는 이벤트에 반응할 수 있습니다.</p>
+    <button onclick="press()">버튼을 누르세요!</button><br>
+
+    <p id="change">버튼을 누르면 이 요소의 내용이 변경됩니다.</p>
+    <button onclick="changedata()">버튼을 누르세요!</button><br>
+
+    <p>숫자를 입력하시오.</p>
+    <input type="text" id="data"><button onclick="isNumber(document.getElementById('data'))">입력완료</button><br><br>
+
+    <button><img id="click" src="https://blogfiles.pstatic.net/MjAxODA5MjFfMTc5/MDAxNTM3NTE3ODAxNDEz.UKLfyzrqRwjNGKCpU8jVB33Nx_lLf4EZo3OwWsdASdEg.he2sbx79l8nYqv8wbbuQ2cup5u4e5gF36bxj1UsvX0Yg.JPEG.htghtc19/btn_beforepress.jpg" onmousedown="btn_afterpress()"
+        onmouseup="btn_beforepress()"></button><br>
+
+        <p>버튼을 클릭해 보세요!</p>
+</body>
+
+</html>

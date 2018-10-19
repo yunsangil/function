@@ -4,8 +4,8 @@
     <style>
       #click {
         width:50%;
-		height:50%;	
-	
+		height:50%;
+
 	background: white;
 	color: black;
 	font-size: 10vmin;
@@ -14,9 +14,9 @@
       }
     </style>
   </head>
-  
+
   <body>
-    <img id="click" src='ëƒ¥ëƒ¥ì´.jpeg' ></div>
+    <img id="click" src='?ƒ¥?ƒ¥?´.jpeg' ></div>
   </body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script>
@@ -26,7 +26,7 @@
 	click.mousedown(function(){
 	  timeout=setInterval(function(){
 		if(flag!=1){
-		  document.getElementById('click').src='ëŒ•ëŒ•ì´.jpeg';
+		  document.getElementById('click').src='?Œ•?Œ•?´.jpeg';
 		} flag = 1;
 	  }, 50);
 	  return false;
@@ -34,7 +34,7 @@
 
 	$(document).mouseup(function(){
 	  clearInterval(timeout);
-	  document.getElementById('click').src='ëƒ¥ëƒ¥ì´.jpeg';
+	  document.getElementById('click').src='?ƒ¥?ƒ¥?´.jpeg';
 	  flag=0;
 	  return false;
 	});
